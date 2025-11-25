@@ -1,13 +1,24 @@
-import type React from "react"
-import style from './Button.module.css'
+import type React from "react";
+import style from "./Button.module.css";
 interface IButtonProps {
-    titre: string;
-    color?: string;
-    type?: "reset" | "submit" | "subuttonbmit"; 
-    children: React.ReactNode|string|Array<React.ReactElement|string>;
+  // titre: string;
+  color?: string;
+  type?: "reset" | "submit" | "button";
+  children: React.ReactNode | string | Array<React.ReactElement | string>;
+  onButtonClick: () => void;
 }
-const  Button:React.FC<IButtonProps> = ({type='button', children}) => {
-    
-    return <div className={style.Button}>{children}</div>
+const Button: React.FC<IButtonProps> = ({ type, children, color, onButtonClick }) => {
+  return (
+    <button
+      type={type}
+      style={{ backgroundColor: color }}
+      className={style.Button}
+      onClick={() => {
+        onButtonClick();
+      }}
+    >
+      {children}
+    </button>
+  );
 };
 export default Button;
