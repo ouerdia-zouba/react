@@ -17,7 +17,9 @@ function App() {
         <Navbar />
         <FlexH1stGrow>
           <MemeSVGViewer image={undefined} meme={current} basePath="" />
-          <MemeForm meme={current} />
+          <MemeForm meme={current} onMemeChange={meme=>{
+            setCurrent(meme);
+          }} />
         </FlexH1stGrow>
         <Footer />
       </FlexV3rdGrow>
