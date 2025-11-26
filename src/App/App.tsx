@@ -5,17 +5,19 @@ import Header from "./components/ui/Header/Header";
 import MemeForm from "./components/MemeForm/MemeForm";
 import FlexH1stGrow from "./components/layout/FlexH1stGrow/FlexH1stGrow";
 import Footer from "./components/ui/Footer/Footer";
-import { emptyMeme, MemeSVGViewer } from "orsys-tjs-meme";
+import { emptyMeme, MemeSVGViewer, type MemeInterface } from "orsys-tjs-meme";
+import { useState } from "react";
 
 function App() {
+  const [current, setCurrent] = useState<MemeInterface>(emptyMeme);
   return (
     <div className="App">
       <FlexV3rdGrow>
         <Header />
         <Navbar />
         <FlexH1stGrow>
-          <MemeSVGViewer image={undefined} meme={emptyMeme} basePath="" />
-          <MemeForm />
+          <MemeSVGViewer image={undefined} meme={current} basePath="" />
+          <MemeForm meme={current} />
         </FlexH1stGrow>
         <Footer />
       </FlexV3rdGrow>
