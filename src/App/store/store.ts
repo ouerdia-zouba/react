@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currentReducer from "./current";
-import { loadRessources } from "./ressources";
+import ressourcesReducer, { loadRessources } from "./ressources";
 //import { emptyMeme } from "orsys-tjs-meme";
 
 
-export const store=configureStore ({reducer:{current:currentReducer}});
+export const store=configureStore ({reducer:{current:currentReducer,ressources:ressourcesReducer}});
 
 store.subscribe (() =>{
     console.log('%c%s', 'state changed', store.getState());
