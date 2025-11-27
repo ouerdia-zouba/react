@@ -1,4 +1,5 @@
 import "./App.css";
+import "./store/store.ts";
 import FlexV3rdGrow from "./components/layout/FlexV3rdGrow/FlexV3rdGrow";
 import Navbar from "./components/ui/Navbar/Navbar";
 import Header from "./components/ui/Header/Header";
