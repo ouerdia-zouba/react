@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import { Container, Nav, Navbar as Nvb } from "react-bootstrap";
 
 import '../../../../../node_modules/bootstrap/dist/css/bootstrap.css'
+import { Link } from "react-router";
 
 const Navbar: React.FC = () => {
   return (
@@ -11,9 +12,9 @@ const Navbar: React.FC = () => {
         <Container>
           <Nvb.Brand href="#home">Navbar</Nvb.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Link to={"/home"}>Home</Link>
+            <Link to={"/thumbs"}>Thumbs</Link>
+            <Link to={"/editor"}>Editor</Link>
           </Nav>
         </Container>
       </Nvb>

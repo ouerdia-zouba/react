@@ -32,5 +32,5 @@ export const loadRessources = createAsyncThunk("ressources/load", async () => {
   return { memes: await prAll[0].json(), images: await prAll[1].json() };
 });
 
- const ressourcesReducer=ressources.reducer;
+const ressourcesReducer=ressources.reducer;
 export default ressourcesReducer

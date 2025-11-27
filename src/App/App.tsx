@@ -1,36 +1,28 @@
 import "./App.css";
-import "./store/store.ts";
 import FlexV3rdGrow from "./components/layout/FlexV3rdGrow/FlexV3rdGrow";
 import Navbar from "./components/ui/Navbar/Navbar";
 import Header from "./components/ui/Header/Header";
-import FlexH1stGrow from "./components/layout/FlexH1stGrow/FlexH1stGrow";
-import MemeForm from "./components/MemeForm/MemeForm";
+import Thumbnail from "./pages/Thumbnail";
+import Editor from "./pages/Editor";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router";
 import Footer from "./components/ui/Footer/Footer";
-import { emptyMeme, MemeSVGViewer, type ImageInterface, type MemeInterface } from "orsys-tjs-meme";
-import { useEffect, useState } from "react";
-import { REST_ADR, REST_RESSOURCES } from "./constantes/config";
 
 function App() {
-  const [current, setCurrent] = useState<MemeInterface>(emptyMeme)
-  const [images, setimages] = useState<Array<ImageInterface>>([]);
-  useEffect(() => {
-    fetch(`${REST_ADR}${REST_RESSOURCES.images}`).then(r=>r.json()).then(arr=>setimages(arr))
-  }, [])
-  
-  return <div className="App">
-    {JSON.stringify(images)}
-    <FlexV3rdGrow>
-
-      <Header/>
-      <Navbar/>
-      <FlexH1stGrow>
-        <MemeSVGViewer image={images.find((img)=>img.id===current.imageId)} meme={current} basePath=""/>
-        <MemeForm images={images} meme={current} onMemeChange={(newMeme:MemeInterface)=>{
-          setCurrent(newMeme)
-        }}/>
-      </FlexH1stGrow>
-      <Footer/>
-    </FlexV3rdGrow>
-  </div>
+  return (
+    <div className="App">
+      <FlexV3rdGrow>
+        <Header />
+        <Navbar />
+        <Routes>
+          <Route Component={Home} path="/home"></Route>
+          <Route Component={Thumbnail} path="/thumbs"></Route>
+          <Route Component={Editor} path="/editor/:id"></Route>
+          <Route Component={Editor} path="/editor"></Route>
+        </Routes>
+        <Footer />
+      </FlexV3rdGrow>
+    </div>
+  );
 }
 export default App;
